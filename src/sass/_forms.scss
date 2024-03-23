@@ -1,0 +1,32 @@
+@use "./theme";
+
+@mixin input-primary {
+  background-color: theme.color("primary", "900");
+  color: theme.color("primary", "contrastText");
+  border: 2px solid theme.color("primary", "800");
+  border-radius: theme.shape("border-radius");
+
+  &:hover {
+    border-color: theme.color("primary", "600");
+  }
+
+};
+
+@mixin label-primary {
+  color: theme.color("background", "contrastText");
+};
+
+label, input {
+  display: block;
+};
+
+label {
+  margin-bottom: theme.$spacing;
+  @include label-primary();
+};
+
+input {
+  margin-bottom: theme.$spacing * 2;
+  padding: theme.$spacing;
+  @include input-primary();
+};

@@ -1,5 +1,48 @@
-h1 {
-  color: aqua;
+label, p, input, button {
+  font-size: 1.2rem;
+}
+
+label, input {
+  display: block;
+}
+
+label {
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+input {
+  margin-bottom: 16px;
+  padding: 8px;
+  background-color: #263238;
+  color: #fff;
+  border: 2px solid #37474F;
+  border-radius: 6px;
+}
+input:hover {
+  border-color: #546E7A;
+}
+
+button {
+  padding: 4px 8px;
+  border: 2px solid #37474F;
+  border-radius: 6px;
+  background-color: #263238;
+  color: #fff;
+}
+button:hover {
+  background-color: #37474F;
+}
+button:active {
+  background-color: #455A64;
+}
+
+body {
+  background-color: #111111;
+}
+
+*:focus {
+  outline: 2px solid #303F9F;
 }
 
 /*# sourceMappingURL=global.css.map */

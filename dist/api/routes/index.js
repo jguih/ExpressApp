@@ -16,9 +16,9 @@ exports.indexRouter = void 0;
 const express_1 = __importDefault(require("express"));
 var router = express_1.default.Router();
 /* GET home page. */
-router.get('/', function (req, res, next) {
+router.get("/", function (req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
-        res.render('index', { title: 'Express' });
+        res.render("index", { title: "Express" });
     });
 });
 exports.indexRouter = router;

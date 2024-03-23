@@ -1,0 +1,9 @@
+
+mixin post
+  div 
+    form(action="/post", method="post") 
+      label(for="post-title") Title:
+      input(type="text", name="name")#post-title
+      label(for="post-content") Description:
+      input(type="text", name="content")#post-content
+      button(type="submit") Create

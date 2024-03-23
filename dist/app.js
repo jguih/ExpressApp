@@ -12,14 +12,14 @@ const http_errors_1 = __importDefault(require("http-errors"));
 const process_1 = require("process");
 var app = (0, express_1.default)();
 // view engine setup
-app.set('views', path_1.default.join((0, process_1.cwd)(), '/src/views'));
-app.set('view engine', 'pug');
+app.set("views", path_1.default.join((0, process_1.cwd)(), "/src/views"));
+app.set("view engine", "pug");
 app.use((0, morgan_1.default)("dev"));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
 app.use("/styles", express_1.default.static(path_1.default.join((0, process_1.cwd)(), "/dist/stylesheets")));
-app.use('/', routes_1.indexRouter);
-app.use('/users', users_1.usersRouter);
+app.use("/", routes_1.indexRouter);
+app.use("/users", users_1.usersRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next((0, http_errors_1.default)(404));

@@ -1,8 +1,5 @@
 extends layout
+include ../components/ui/post.pug
 
 block content
-  form(action="/post", method="post") 
-    label(for="post-title") Title:
-    input(type="text", name="name")#post-title
-    label(for="post-content")
-    input(type="text", name="content")#post-content
+  +post

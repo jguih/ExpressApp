@@ -1,0 +1,22 @@
+@use "./theme";
+@use "sass:math";
+
+@mixin button-primary {
+  background-color: theme.color("primary", "900");
+  color: theme.color("primary", "contrastText");
+
+  &:hover {
+    background-color: theme.color("primary", "800");
+  }
+
+  &:active {
+    background-color: theme.color("primary", "700");
+  }
+};
+
+button {
+  padding: math.div(theme.$spacing, 2) theme.$spacing;
+  border: 2px solid theme.color("primary", "800");
+  border-radius: theme.shape("border-radius");
+  @include button-primary();
+};

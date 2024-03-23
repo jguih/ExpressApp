@@ -7,7 +7,7 @@ exports.usersRouter = void 0;
 const express_1 = __importDefault(require("express"));
 var router = express_1.default.Router();
 /* GET users listing. */
-router.get('/', function (req, res, next) {
-    res.send('respond with a resource');
+router.get("/", function (req, res, next) {
+    res.send("respond with a resource");
 });
 exports.usersRouter = router;

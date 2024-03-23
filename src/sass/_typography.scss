@@ -1,4 +1,5 @@
+@use "./theme";
 
-h1 {
-    color: aqua;
+label, p, input, button {
+  font-size: theme.typography("base-font-size");
 }

@@ -1,0 +1,42 @@
+@use "sass:map";
+
+$spacing: 8px;
+
+$colors: (
+  "background": (
+    "main": #111111,
+    "contrastText": #fff,
+  ),
+  "primary": (
+    "900": #263238,
+    "800": #37474F,
+    "700": #455A64,
+    "600": #546E7A,
+    "contrastText": #fff,
+  ),
+  "secondary": (
+    "900": #1A237E,
+    "800": #283593,
+    "700": #303F9F,
+  )
+);
+
+@function color($base, $shade) {
+  @return map-get(map-get($colors, $base), $shade);
+};
+
+$typography: (
+  "base-font-size": 1.2rem,
+);
+
+@function typography($key) {
+  @return map-get($map: $typography, $key: $key);
+};
+
+$shape: (
+  "border-radius": 6px,
+);
+
+@function shape($key) {
+  @return map-get($map: $shape, $key: $key);
+}
