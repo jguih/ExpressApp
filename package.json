@@ -1,0 +1,37 @@
+{
+  "name": "tasksapp",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -c \"auto\" \"npm:watch-*\"",
+    "build": "concurrently -c \"auto\" \"npm:compile-*\"",
+    "start": "node ./dist/app.js",
+    "compile-ts": "tsc --build --verbose",
+    "compile-sass": "sass --verbose src/sass:dist/stylesheets",
+    "watch-ts": "tsc --build --watch --verbose",
+    "watch-sass": "sass --watch --verbose src/sass:dist/stylesheets",
+    "watch-app": "nodemon -e js,pug,css ./dist/app.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.11.0",
+    "debug": "~2.6.9",
+    "express": "^4.19.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.7",
+    "@types/debug": "^4.1.12",
+    "@types/express": "^4.17.21",
+    "@types/http-errors": "^2.0.4",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^20.11.30",
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.0",
+    "prettier": "3.2.5",
+    "prisma": "^5.11.0",
+    "sass": "^1.72.0",
+    "typescript": "^5.4.3"
+  }
+}
