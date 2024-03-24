@@ -1,10 +1,10 @@
-import express from "express";
+import { Router } from "express";
 
-var router = express.Router();
+var router = Router();
 
 /* GET home page. */
-router.get("/", async function (req, res, next) {
-  res.render("index", { title: "Express" });
+router.get("/", async (req, res, next) => {
+  res.render("pages/index");
 });
 
 export const indexRouter = router;

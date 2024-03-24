@@ -10,10 +10,12 @@
     "compile-sass": "sass --verbose src/sass:dist/stylesheets",
     "watch-ts": "tsc --build --watch --verbose",
     "watch-sass": "sass --watch --verbose src/sass:dist/stylesheets",
-    "watch-app": "nodemon -e js,pug,css ./dist/app.js"
+    "watch-app": "nodemon -e js,pug,css ./dist/app.js",
+    "prisma-generate": "prisma generate --schema=./src/api/prisma/schema.prisma"
   },
   "dependencies": {
     "@prisma/client": "^5.11.0",
+    "body-parser": "^1.20.2",
     "debug": "~2.6.9",
     "express": "^4.19.1",
     "http-errors": "~1.6.3",

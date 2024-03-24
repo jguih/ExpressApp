@@ -1,22 +1,31 @@
 @use "./theme";
 @use "sass:math";
 
-@mixin button-primary {
-  background-color: theme.color("primary", "900");
-  color: theme.color("primary", "contrastText");
+@mixin button-base($colorName) {
+  padding: math.div(theme.$spacing, 2) theme.$spacing;
+  border: 2px solid theme.color($colorName, "800");
+  border-radius: theme.shape("border-radius");
+
+  background-color: theme.color($colorName, "900");
+  color: theme.color($colorName, "contrastText");
 
   &:hover {
-    background-color: theme.color("primary", "800");
+    background-color: theme.color($colorName, "800");
   }
 
   &:active {
-    background-color: theme.color("primary", "700");
+    background-color: theme.color($colorName, "700");
   }
-};
+}
 
 button {
-  padding: math.div(theme.$spacing, 2) theme.$spacing;
-  border: 2px solid theme.color("primary", "800");
-  border-radius: theme.shape("border-radius");
-  @include button-primary();
+  @include button-base("primary");
 };
+
+button.success {
+  @include button-base("success");
+}
+
+button.error {
+  @include button-base("error");
+}

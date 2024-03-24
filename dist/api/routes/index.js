@@ -8,17 +8,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.indexRouter = void 0;
-const express_1 = __importDefault(require("express"));
-var router = express_1.default.Router();
+const express_1 = require("express");
+var router = (0, express_1.Router)();
 /* GET home page. */
-router.get("/", function (req, res, next) {
-    return __awaiter(this, void 0, void 0, function* () {
-        res.render("index", { title: "Express" });
-    });
-});
+router.get("/", (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    res.render("pages/index");
+}));
 exports.indexRouter = router;

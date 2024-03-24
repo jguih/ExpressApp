@@ -1,0 +1,9 @@
+extends ../layout
+
+block content
+  form(action="/posts", method="post") 
+      label(for="post-title") Title:
+      input(type="text", name="title")#post-title
+      label(for="post-content") Description:
+      input(type="text", name="content")#post-content
+      button(type="submit") Create

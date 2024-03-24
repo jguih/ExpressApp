@@ -1,10 +1,10 @@
 import express from "express";
 import path from "path";
 import { indexRouter } from "./api/routes";
-import { usersRouter } from "./api/routes/users";
 import morgan from "morgan";
 import createHttpError from "http-errors";
 import { cwd } from "process";
+import { postsRouter } from "./api/routes/posts";
 
 var app = express();
 
@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/styles", express.static(path.join(cwd(), "/dist/stylesheets")));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/posts", postsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
