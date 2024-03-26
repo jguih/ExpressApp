@@ -2,6 +2,7 @@
 @use "./theme";
 @use "./forms";
 @use "./buttons";
+@use "./components/posts";
 
 body {
   background-color: theme.color("background", "main");

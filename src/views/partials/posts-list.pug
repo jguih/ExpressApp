@@ -1,0 +1,9 @@
+include ./post
+
+ul.post-container(
+  hx-target="closest li"
+  hx-swap="outerHTML"
+)
+  if posts
+    each post in posts 
+      +post(post)

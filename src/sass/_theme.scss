@@ -1,6 +1,9 @@
 @use "sass:map";
 
 $spacing: 8px;
+@function spacing($factor) {
+  @return $factor * $spacing
+};
 
 $colors: (
   "background": (
@@ -40,6 +43,7 @@ $colors: (
 
 $typography: (
   "base-font-size": 1.2rem,
+  "h1": 2.0rem,
 );
 
 @function typography($key) {
@@ -48,8 +52,24 @@ $typography: (
 
 $shape: (
   "border-radius": 6px,
+  "border-width": 2px,
 );
 
 @function shape($key) {
   @return map-get($map: $shape, $key: $key);
 }
+
+// Mixins --
+
+@mixin base-border(
+  $hover-color: color("primary", "800"),
+) {
+  border-radius: shape("border-radius");
+  border: shape("border-width") solid transparent;
+
+  &:hover {
+    border-color: $hover-color;
+  }
+}
+
+// --

@@ -1,3 +1,8 @@
 
-mixin post
-  // TODO:
+mixin post(post)
+  li
+    h1.post-title= post.title
+    p.post-content= post.content
+    button.post-delete(
+      hx-delete="/posts/"+post.id
+    ) Delete

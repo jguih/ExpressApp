@@ -1,20 +1,20 @@
-import { PrismaClient } from "@prisma/client";
 import bodyParser from "body-parser";
 import { Router } from "express";
 import prisma from "../prisma/client";
+import { render } from "../handler/render";
 
 var router = Router();
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
-router.post("", async (req, res, next) => {
+router.post("/", (req, res, next) => {
   if (!req.body.title || req.body.title === "") {
-    res.status(400).send("Invalid post name!");
+    render(req, res).page.error("Invalid post name!");
     return;
   }
   if (!req.body.content || req.body.content === "") {
-    res.status(400).send("Invalid post content!");
+    render(req, res).page.error("Invalid post content!");
     return;
   }
   prisma.post
@@ -24,11 +24,35 @@ router.post("", async (req, res, next) => {
         content: req.body.content,
       },
     })
-    .then((value) => {
-      res.send(value);
+    .then(async () => {
+      // Send rendered list of all posts intead of redirecting.
+      const posts = await prisma.post.findMany();
+      render(req, res).partial.postsList(posts);
     })
     .catch((reason) => {
       res.status(400).send(reason);
+    });
+});
+
+router.get("/", async (req, res, next) => {
+  // Send a list containing all posts
+  const posts = await prisma.post.findMany();
+  render(req, res).partial.postsList(posts);
+});
+
+router.delete("/:postId", async (req, res, next) => {
+  const { postId } = req.params;
+  prisma.post
+    .delete({
+      where: {
+        id: Number(postId),
+      },
+    })
+    .then(async () => {
+      res.status(200).send();
+    })
+    .catch((err) => {
+      res.status(400).send(err);
     });
 });
 

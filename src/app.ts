@@ -16,6 +16,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/styles", express.static(path.join(cwd(), "/dist/stylesheets")));
+app.use("/js", express.static(path.join(cwd(), "/public/js")));
 
 app.use("/", indexRouter);
 app.use("/posts", postsRouter);

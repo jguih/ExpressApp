@@ -2,6 +2,14 @@ label, p, input, button {
   font-size: 1.2rem;
 }
 
+h1 {
+  font-size: 2rem;
+}
+
+p, h1, h2, h3 {
+  color: #fff;
+}
+
 label, input {
   display: block;
 }
@@ -62,6 +70,54 @@ button.error:hover {
   background-color: #C62828;
 }
 button.error:active {
+  background-color: #D32F2F;
+}
+
+ul.post-container {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+ul.post-container li {
+  background-color: #263238;
+  padding: 16px;
+  margin-bottom: 16px;
+  position: relative;
+  border-radius: 6px;
+  border: 2px solid transparent;
+}
+ul.post-container li:hover {
+  border-color: #37474F;
+}
+
+.post-title {
+  margin-top: 0;
+  max-width: 200px;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.post-content {
+  margin-bottom: 0;
+}
+
+button.post-delete {
+  padding: 4px 8px;
+  border: 2px solid #C62828;
+  border-radius: 6px;
+  background-color: #B71C1C;
+  color: #fff;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-top: 16px;
+  margin-right: 16px;
+}
+button.post-delete:hover {
+  background-color: #C62828;
+}
+button.post-delete:active {
   background-color: #D32F2F;
 }
 

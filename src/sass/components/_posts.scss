@@ -1,0 +1,36 @@
+@use "../theme";
+@use "../buttons";
+
+ul.post-container {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+ul.post-container li {
+  background-color: theme.color("primary", "900");
+  padding: theme.spacing(2);
+  margin-bottom: theme.spacing(2);
+  position: relative;
+  @include theme.base-border();
+}
+
+.post-title {
+  margin-top: 0;
+  max-width: 200px;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.post-content {
+  margin-bottom: 0;
+}
+
+button.post-delete {
+  @include buttons.button-base("error");
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-top: theme.spacing(2);
+  margin-right: theme.spacing(2);
+}

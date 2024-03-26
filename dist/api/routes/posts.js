@@ -16,27 +16,53 @@ exports.postsRouter = void 0;
 const body_parser_1 = __importDefault(require("body-parser"));
 const express_1 = require("express");
 const client_1 = __importDefault(require("../prisma/client"));
+const render_1 = require("../handler/render");
 var router = (0, express_1.Router)();
 router.use(body_parser_1.default.json());
 router.use(body_parser_1.default.urlencoded({ extended: true }));
-router.post("", (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+router.post("/", (req, res, next) => {
     if (!req.body.title || req.body.title === "") {
-        res.status(400).send("Invalid post name!");
+        (0, render_1.render)(req, res).page.error("Invalid post name!");
         return;
     }
     if (!req.body.content || req.body.content === "") {
-        res.status(400).send("Invalid post content!");
+        (0, render_1.render)(req, res).page.error("Invalid post content!");
         return;
     }
-    client_1.default.post.create({
+    client_1.default.post
+        .create({
         data: {
             title: req.body.title,
             content: req.body.content,
-        }
-    }).then((value) => {
-        res.send(value);
-    }).catch((reason) => {
+        },
+    })
+        .then(() => __awaiter(void 0, void 0, void 0, function* () {
+        // Send rendered list of all posts intead of redirecting.
+        const posts = yield client_1.default.post.findMany();
+        (0, render_1.render)(req, res).partial.postsList(posts);
+    }))
+        .catch((reason) => {
         res.status(400).send(reason);
+    });
+});
+router.get("/", (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    // Send a list containing all posts
+    const posts = yield client_1.default.post.findMany();
+    (0, render_1.render)(req, res).partial.postsList(posts);
+}));
+router.delete("/:postId", (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const { postId } = req.params;
+    client_1.default.post
+        .delete({
+        where: {
+            id: Number(postId),
+        },
+    })
+        .then(() => __awaiter(void 0, void 0, void 0, function* () {
+        res.status(200).send();
+    }))
+        .catch((err) => {
+        res.status(400).send(err);
     });
 }));
 exports.postsRouter = router;

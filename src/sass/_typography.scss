@@ -1,5 +1,15 @@
 @use "./theme";
 
+$base-fs: theme.typography("base-font-size");
+
 label, p, input, button {
-  font-size: theme.typography("base-font-size");
+  font-size: $base-fs;
+}
+
+h1 {
+  font-size: 2.0rem;
+}
+
+p, h1, h2, h3 {
+  color: theme.color("background", "contrastText");
 }
